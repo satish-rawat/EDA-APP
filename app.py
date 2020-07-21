@@ -10,7 +10,6 @@ from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.svm import SVR, SVC
 from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier
-import joblib
 # Viz Packages
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -106,8 +105,6 @@ def linear_reg(df):
         clf = lrr.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         regression_eval(y_test_set=y_test, y_prediction=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'linear_regression.pkl')
 
 
 # noinspection PyPep8Naming
@@ -127,9 +124,7 @@ def knn_reg(df):
         clf = knnr.fit(X_train, np.ravel(y_train))
         y_pred = clf.predict(X_test)
         regression_eval(y_test_set=y_test, y_prediction=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'knn_regression.pkl')
-
+        
 
 # noinspection PyPep8Naming
 def lasso_reg(df):
@@ -140,9 +135,7 @@ def lasso_reg(df):
         clf = lasso.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         regression_eval(y_test_set=y_test, y_prediction=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'lasso_regression.pkl')
-
+        
 
 # noinspection PyPep8Naming
 def ridge_reg(df):
@@ -153,9 +146,7 @@ def ridge_reg(df):
         clf = ridreg.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         regression_eval(y_test_set=y_test, y_prediction=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'ridge_regression.pkl')
-
+        
 
 # noinspection PyPep8Naming
 def random_forest_reg(df):
@@ -173,8 +164,6 @@ def random_forest_reg(df):
         clf = randforreg.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         regression_eval(y_test_set=y_test, y_prediction=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'random_forest_regression.pkl')
 
 
 # noinspection PyPep8Naming
@@ -195,17 +184,13 @@ def support_vector_reg(df):
             clf = svr.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
             regression_eval(y_test_set=y_test, y_prediction=y_pred)
-            if st.button('Click Me To Download Model'):
-                joblib.dump(clf, 'support_vector_regression.pkl')
 
     if st.checkbox(label='See The Model Result'):
         svr = SVR(C=C, kernel=kernel, degree=degree, gamma=gamma)
         clf = svr.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         regression_eval(y_test_set=y_test, y_prediction=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'support_vector_regression.pkl')
-
+        
 
 # noinspection PyPep8Naming
 def decision_tree_reg(df):
@@ -221,9 +206,7 @@ def decision_tree_reg(df):
         clf = dectreereg.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         regression_eval(y_test_set=y_test, y_prediction=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'decision_tree_regression.pkl')
-
+        
 
 # Classification
 # noinspection PyPep8Naming
@@ -248,9 +231,7 @@ def log_reg(df):
         clf = logr.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         classification_eval(clf=clf, X_test=X_test, y_train=y_train, y_test=y_test, y_pred=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'logistic_regression.pkl')
-
+        
 
 # noinspection PyPep8Naming
 def knn_classification(df):
@@ -270,9 +251,7 @@ def knn_classification(df):
         clf = knn.fit(X_train, np.ravel(y_train))
         y_pred = clf.predict(X_test)
         classification_eval(clf=clf, X_test=X_test, y_train=y_train, y_test=y_test, y_pred=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'knn_classifier.pkl')
-
+        
 
 # noinspection PyPep8Naming
 def decision_tree_classification(df):
@@ -288,9 +267,7 @@ def decision_tree_classification(df):
         clf = dec_tree_clf.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         classification_eval(clf=clf, X_test=X_test, y_train=y_train, y_test=y_test, y_pred=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'decision_tree_classifier.pkl')
-
+        
 
 # noinspection PyPep8Naming,PyTypeChecker
 def random_forest_classification(df):
@@ -307,9 +284,7 @@ def random_forest_classification(df):
         clf = randforclf.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         classification_eval(clf=clf, X_test=X_test, y_train=y_train, y_test=y_test, y_pred=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'random_forest_classifier.pkl')
-
+        
 
 # noinspection PyPep8Naming,PyTypeChecker
 def support_vector_classification(df):
@@ -328,16 +303,13 @@ def support_vector_classification(df):
             clf = svc.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
             classification_eval(clf=clf, X_test=X_test, y_train=y_train, y_test=y_test, y_pred=y_pred)
-            if st.button('Click Me To Download Model'):
-                joblib.dump(clf, 'support_vector_classifier.pkl')
+
     if st.checkbox(label='See The Model Result'):
         svc = SVC(C=C, degree=degree, kernel=kernel, gamma=gamma, probability=True)
         clf = svc.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         classification_eval(clf=clf, X_test=X_test, y_train=y_train, y_test=y_test, y_pred=y_pred)
-        if st.button('Click Me To Download Model'):
-            joblib.dump(clf, 'support_vector_classifier.pkl')
-
+        
 
 def model(df):
     st.header('Choose Model Specifications')
@@ -455,15 +427,15 @@ def visualisation(df):
             fig2 = px.histogram(df, x=df[x_axis], y=df[x_axis], color=df[color], histfunc='sum')
             st.plotly_chart(fig2)
         if st.checkbox(label='Y-Axis is Count'):
-            fig1 = px.histogram(df, x=df[x_axis], y=df[y_axis], histfunc='count')
-            st.plotly_chart(fig1)
-            fig2 = px.histogram(df, x=df[x_axis], y=df[x_axis], color=df[color], histfunc='count')
-            st.plotly_chart(fig2)
+            fig3 = px.histogram(df, x=df[x_axis], y=df[y_axis], histfunc='count')
+            st.plotly_chart(fig3)
+            fig4 = px.histogram(df, x=df[x_axis], y=df[x_axis], color=df[color], histfunc='count')
+            st.plotly_chart(fig4)
         if st.checkbox(label='Y-Axis is Average'):
-            fig1 = px.histogram(df, x=df[x_axis], y=df[y_axis], histfunc='avg')
-            st.plotly_chart(fig1)
-            fig2 = px.histogram(df, x=df[x_axis], y=df[x_axis], color=df[color], histfunc='avg')
-            st.plotly_chart(fig2)
+            fig5 = px.histogram(df, x=df[x_axis], y=df[y_axis], histfunc='avg')
+            st.plotly_chart(fig5)
+            fig6 = px.histogram(df, x=df[x_axis], y=df[x_axis], color=df[color], histfunc='avg')
+            st.plotly_chart(fig6)
 
     elif chart_type == 'Sunburst Chart':
         path = st.multiselect(label='Select The Path', options=df.columns)
@@ -475,6 +447,14 @@ def visualisation(df):
         st.plotly_chart(fig)
         fig1 = px.box(df, x=df[x_axis], y=df[y_axis], points='all', color=df[color])
         st.plotly_chart(fig1)
+
+    else:
+        fig1 = px.histogram(df, x=df[x_axis], marginal="box")
+        st.plotly_chart(fig1)
+        fig2 = px.histogram(df, x=df[x_axis], y=df[y_axis], marginal="box")
+        st.plotly_chart(fig2)
+        fig3 = px.histogram(df, x=df[x_axis], y=df[y_axis], color=df[color], marginal="box")
+        st.plotly_chart(fig3)
 
 
 def main():
@@ -496,3 +476,4 @@ if __name__ == '__main__':
         if st.checkbox(label='View Dataset'):
             DataFrame = st.dataframe(uploaded_file)
         main()
+
