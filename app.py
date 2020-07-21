@@ -244,7 +244,7 @@ def knn_classification(df):
     metric = st.selectbox(label='Select Distance Metric', options=['euclidean', 'manhattan', 'chebyshev',
                                                                    'minkowski', 'wminkowski', 'seuclidean',
                                                                    'mahalanobis'], index=3)
-    st.dataframe(y_test)
+
     if st.checkbox(label='See The Model Result'):
         knn = KNeighborsClassifier(n_neighbors=n_neighbors, weights=weights, algorithm=algorithm, leaf_size=leaf_size,
                                    metric=metric)
